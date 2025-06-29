@@ -1,70 +1,65 @@
-# README.md
+# Resume Parser API
 
-# Resume Parser
+A FastAPI-based backend for parsing resumes, extracting structured information, and matching resumes to job descriptions.
 
-This project is a Resume Parser application built using FastAPI. It provides functionalities to parse resumes from PDF files, match them with job descriptions, and extract structured information.
+## Features
+
+- Parse resumes (PDF, base64) and extract structured data (skills, education, experience, etc.)
+- Match resumes to job descriptions and provide feedback
+- CORS enabled for local frontend development
 
 ## Project Structure
 
 ```
-resume-parser
-├── app
-│   ├── __init__.py
+resume-parser/
+├── app/
 │   ├── main.py
-│   ├── api
-│   │   ├── __init__.py
+│   ├── api/
 │   │   ├── endpoints.py
-│   ├── core
-│   │   ├── __init__.py
-│   │   ├── config.py
-│   ├── services
-│   │   ├── __init__.py
-│   │   ├── resume_parser.py
-│   │   ├── job_matcher.py
-│   ├── utils
-│   │   ├── __init__.py
-│   │   ├── pdf_utils.py
-│   │   ├── prompt_builder.py
-│   │   ├── json_utils.py
-│   └── models
-│       ├── __init__.py
-│       ├── schemas.py
+│   │   └── models/
+│   │       └── resume.py
+│   ├── core/
+│   │   └── config.py
+│   ├── services/
+│   │   └── resume_parser.py
+│   ├── utils/
+│   │   └── pdf_utils.py
+│   └── models/
+│       └── schemas.py
 ├── requirements.txt
 └── README.md
 ```
 
-## Installation
+## Quickstart
 
-1. Clone the repository:
-   ```
-   git clone <repository-url>
-   cd resume-parser
-   ```
+1. **Install dependencies:**
 
-2. Install the required dependencies:
-   ```
+   ```bash
    pip install -r requirements.txt
    ```
 
-## Usage
+2. **Run the API:**
 
-1. Start the FastAPI application:
-   ```
+   ```bash
    uvicorn app.main:app --reload
    ```
 
-2. Access the API documentation at `http://localhost:8000/docs`.
+3. **API Endpoints:**
+   - `POST /parse-resume` — Parse a resume PDF and extract information
+   - `POST /parse-match-resume` — Match a resume to a job description
+   - `POST /analyse-resume` — Analyse a resume for feedback
+   - `GET /healthcheck` — Health check endpoint
 
-## API Endpoints
+## Models
 
-- **Parse Resume**: Upload a PDF resume to extract structured information.
-- **Match Job**: Compare a resume with a job description to get a match score and insights.
-- **WebSocket Match**: Use WebSocket to send a resume and job description for real-time matching.
+See [`api/models/resume.py`](app/api/models/resume.py) for request and response models.
 
-## Contributing
+## Development
 
-Contributions are welcome! Please open an issue or submit a pull request for any enhancements or bug fixes.
+- Python 3.10+
+- FastAPI
+- Pydantic
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+MIT
